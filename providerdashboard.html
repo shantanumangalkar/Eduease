@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Scholarship Provider Dashboard</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background-color: #0056b3;
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+        }
+        .sidebar .nav-link {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .sidebar .nav-link.active {
+            background-color: #0069d9;
+        }
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .applicant-table {
+            overflow-x: auto;
+        }
+        .heatmap {
+            height: 250px;
+            background: linear-gradient(to right, #e0f7fa, #00796b);
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .sidebar {
+                height: auto;
+                position: static;
+                width: 100%;
+                padding-top: 0;
+                text-align: center;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 10px;
+            }
+            .sidebar .nav-link {
+                display: inline-block;
+                margin: 5px 10px;
+            }
+        }
+        body {
+            background-color: #f5f7fa;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .message-container {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .message-sent {
+            text-align: right;
+            padding: 8px 15px;
+            background-color: #e3f2fd;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .message-received {
+            text-align: left;
+            padding: 8px 15px;
+            background-color: #f8d7da;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .applicant-table {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .communication-panel {
+            padding: 20px;
+        }
+        .btn-attach {
+            background-color: #007bff;
+            color: white;
+        }
+        .active-chat {
+            background-color: #d4edda;
+        }
+        .unread-indicator {
+            width: 10px;
+            height: 10px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column align-items-center justify-content-center text-center p-3">
+        <img src="https://cdn.pixabay.com/photo/2024/08/23/17/43/graduate-8992446_640.png" alt="Profile Picture"
+            class="rounded-circle mb-2" height="100px">
+        <h4>Provider</h4>
+        <nav class="nav flex-column w-100">
+            <a class="nav-link active" href="#">Dashboard</a>
+            <a class="nav-link" href="#">My Scholarships</a>
+            <a class="nav-link" href="#">Applicants</a>
+            <a class="nav-link" href="#">Messages</a>
+            <a class="nav-link" href="#">Settings</a>
+        </nav>
+        <a href="#" class="btn btn-danger mt-3 mb-3">Sign Out</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Scholarship Selection -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title bg-primary text-white p-3">Select Scholarship</h5>
+                <select class="form-control" id="scholarshipSelector">
+                    <option value="scholarship1">Scholarship 1: National Merit Program</option>
+                    <option value="scholarship2">Scholarship 2: Gates Scholarship</option>
+                    <option value="scholarship3">Scholarship 3: Fulbright Program</option>
+                    <!-- Add more scholarships as needed -->
+                </select>
+            </div>
+        </div>
+
+        <!-- Applicant Management Section -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Applicant Management</h5>
+                <div class="applicant-table">
+                    <table class="table table-hover">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th>#</th>
+                                <th>Applicant Name</th>
+                                <th>Email</th>
+                                <th>Eligibility Score</th>
+                                <th>AI Ranking</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>John Doe</td>
+                                <td>johndoe@example.com</td>
+                                <td>85%</td>
+                                <td>9.2/10</td>
+                                <td>
+                                    <button class="btn btn-info btn-sm">View Profile</button>
+                                    <button class="btn btn-success btn-sm">Accept</button>
+                                    <button class="btn btn-danger btn-sm">Reject</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>SHANK</td>
+                                <td>SHANK@example.com</td>
+                                <td>55%</td>
+                                <td>7.2/10</td>
+                                <td>
+                                    <button class="btn btn-info btn-sm">View Profile</button>
+                                    <button class="btn btn-success btn-sm">Accept</button>
+                                    <button class="btn btn-danger btn-sm">Reject</button>
+                                </td>
+                            </tr>
+                            <!-- Add more applicants as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Communication Panel -->
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4>Integrated Scholarship Authority Communication Panel</h4>
+                </div>
+                <div class="card-body">
+                    <!-- Scholarship Selection -->
+                    <div class="mb-4">
+                        <label for="scholarshipSelect" class="form-label"><strong>Select Scholarship:</strong></label>
+                        <select class="form-control" id="scholarshipSelect">
+                            <option value="">Choose a Scholarship</option>
+                            <option value="1">National Merit Scholarship</option>
+                            <option value="2">Gates Scholarship</option>
+                            <option value="3">Fulbright Program</option>
+                            <option value="4">Rhodes Scholarship</option>
+                            <!-- Additional scholarships can be added here -->
+                        </select>
+                    </div>
+    
+                    <!-- Filter and Search Bar -->
+                    <div class="mb-4 d-flex justify-content-between">
+                        <input type="text" id="searchApplicants" class="form-control" placeholder="Search applicants by name or email" style="width: 70%;">
+                        <select class="form-control" id="applicantStatusFilter" style="width: 25%;">
+                            <option value="">Filter by Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+    
+                    <!-- Applicants Table -->
+                    <div class="applicant-table mb-4">
+                        <table class="table table-bordered table-striped">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Last Activity</th>
+                                    <th>Chat</th>
+                                </tr>
+                            </thead>
+                            <tbody id="applicantTable">
+                                <!-- Example Row -->
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>john@example.com</td>
+                                    <td>Pending</td>
+                                    <td>5 min ago</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm start-chat" data-name="John Doe">Chat <span class="unread-indicator"></span></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jane Smith</td>
+                                    <td>jane@example.com</td>
+                                    <td>Approved</td>
+                                    <td>2 hours ago</td>
+                                    <td><button class="btn btn-primary btn-sm start-chat" data-name="Jane Smith">Chat</button></td>
+                                </tr>
+                                <!-- More rows can be dynamically added -->
+                            </tbody>
+                        </table>
+                    </div>
+    
+                    <!-- Chat Interface -->
+                    <div class="card communication-panel" style="display: none;" id="chatPanel">
+                        <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+                            <span>Chat with <strong id="applicantName"></strong></span>
+                            <button class="btn btn-sm btn-danger" id="closeChat">Close Chat</button>
+                        </div>
+                        <div class="card-body message-container" id="messageContainer">
+                            <!-- Sample messages -->
+                            <div class="message-received">Hi, I am interested in applying for this scholarship.</div>
+                            <div class="message-sent">Great! Please let us know if you need any help with the application.</div>
+                        </div>
+                        <div class="card-footer">
+                            <form id="messageForm">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="messageInput" placeholder="Type your message..." required>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-attach" type="button"><i class="fa fa-paperclip"></i></button>
+                                        <button class="btn btn-primary" type="submit">Send</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Application Hotspots Heatmap -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Application Hotspots</h5>
+                <div class="heatmap d-flex align-items-center justify-content-center">
+                    <p class="text-white">Heatmap will display here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Handling chat button click
+        document.querySelectorAll('.start-chat').forEach(button => {
+            button.addEventListener('click', function () {
+                const applicantName = this.getAttribute('data-name');
+                document.getElementById('applicantName').innerText = applicantName;
+                document.getElementById('chatPanel').style.display = 'block';
+            });
+        });
+
+        // Close chat panel
+        document.getElementById('closeChat').addEventListener('click', function () {
+            document.getElementById('chatPanel').style.display = 'none';
+        });
+
+        // Message form submission
+        document.getElementById('messageForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const message = document.getElementById('messageInput').value;
+            const messageContainer = document.getElementById('messageContainer');
+            const messageSent = document.createElement('div');
+            messageSent.className = 'message-sent';
+            messageSent.innerText = message;
+            messageContainer.appendChild(messageSent);
+            document.getElementById('messageInput').value = '';
+            messageContainer.scrollTop = messageContainer.scrollHeight; // Auto-scroll to bottom
+        });
+    </script>
+</body>
+</html>

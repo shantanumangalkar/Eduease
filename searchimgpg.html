@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>AI-Powered Scholarship Matching</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+        .scholarship-score {
+            background-color: #17a2b8;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        .btn-apply {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 5px 15px;
+        }
+        .btn-apply:hover {
+            background-color: #0056b3;
+        }
+        .search-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .no-results {
+            text-align: center;
+            color: #777;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">List of Scholarships</h2>
+
+    <!-- Search Section -->
+    <div class="d-flex justify-content-center mb-4" >
+        <input type="text" id="searchInput" class="search-input" placeholder="Search scholarships by name, eligibility, or amount...">
+    </div>
+
+    <!-- Scholarship Recommendations Section -->
+    <div id="scholarshipList">
+        <!-- Example Scholarships -->
+        <div class="card p-4" data-name="Tech Innovators Scholarship" data-eligibility="technology-related" data-amount="5000">
+            <div class="d-flex justify-content-between">
+                <h5>Tech Innovators Scholarship</h5>
+                <span class="scholarship-score">Recommendation: 85%</span>
+            </div>
+            <p><strong>Eligibility:</strong> Students in technology-related fields with financial need.</p>
+            <p><strong>Amount:</strong> $5,000 per year</p>
+            <p><strong>Deadline:</strong> October 15, 2024</p>
+            <button class="btn btn-apply">Apply Now</button>
+        </div>
+
+        <div class="card p-4" data-name="Women in STEM Scholarship" data-eligibility="female-students" data-amount="3500">
+            <div class="d-flex justify-content-between">
+                <h5>Women in STEM Scholarship</h5>
+                <span class="scholarship-score">Recommendation: 78%</span>
+            </div>
+            <p><strong>Eligibility:</strong> Female students pursuing a STEM degree.</p>
+            <p><strong>Amount:</strong> $3,500 per year</p>
+            <p><strong>Deadline:</strong> December 10, 2024</p>
+            <button class="btn btn-apply">Apply Now</button>
+        </div>
+
+        <div class="card p-4" data-name="Global Scholars Program" data-eligibility="international-students" data-amount="full-tuition">
+            <div class="d-flex justify-content-between">
+                <h5>Global Scholars Program</h5>
+                <span class="scholarship-score">Recommendation: 92%</span>
+            </div>
+            <p><strong>Eligibility:</strong> International students with a strong academic record.</p>
+            <p><strong>Amount:</strong> Full tuition coverage</p>
+            <p><strong>Deadline:</strong> November 20, 2024</p>
+            <button class="btn btn-apply">Apply Now</button>
+        </div>
+
+        <div class="card p-4" data-name="Data Science Leaders Scholarship" data-eligibility="data-science" data-amount="10000">
+            <div class="d-flex justify-content-between">
+                <h5>Data Science Leaders Scholarship</h5>
+                <span class="scholarship-score">Recommendation: 90%</span>
+            </div>
+            <p><strong>Eligibility:</strong> Students enrolled in a data science program with academic excellence.</p>
+            <p><strong>Amount:</strong> $10,000 one-time award</p>
+            <p><strong>Deadline:</strong> January 5, 2025</p>
+            <button class="btn btn-apply">Apply Now</button>
+        </div>
+
+        <div class="card p-4" data-name="Underrepresented Minorities Scholarship" data-eligibility="underrepresented-communities" data-amount="7500">
+            <div class="d-flex justify-content-between">
+                <h5>Underrepresented Minorities Scholarship</h5>
+                <span class="scholarship-score">Recommendation: 87%</span>
+            </div>
+            <p><strong>Eligibility:</strong> Students from underrepresented communities in higher education.</p>
+            <p><strong>Amount:</strong> $7,500 per year</p>
+            <p><strong>Deadline:</strong> February 15, 2025</p>
+            <button class="btn btn-apply">Apply Now</button>
+        </div>
+    <!-- Additional Scholarships -->
+<div class="card p-4" data-name="Engineering Excellence Scholarship" data-eligibility="engineering-students" data-amount="4000">
+    <div class="d-flex justify-content-between">
+        <h5>Engineering Excellence Scholarship</h5>
+        <span class="scholarship-score">Recommendation: 88%</span>
+    </div>
+    <p><strong>Eligibility:</strong> Students enrolled in an engineering program with a 3.5+ GPA.</p>
+    <p><strong>Amount:</strong> $4,000 per year</p>
+    <p><strong>Deadline:</strong> April 1, 2025</p>
+    <button class="btn btn-apply">Apply Now</button>
+</div>
+
+<div class="card p-4" data-name="Arts and Creativity Scholarship" data-eligibility="arts-students" data-amount="3000">
+    <div class="d-flex justify-content-between">
+        <h5>Arts and Creativity Scholarship</h5>
+        <span class="scholarship-score">Recommendation: 75%</span>
+    </div>
+    <p><strong>Eligibility:</strong> Students pursuing degrees in arts, design, or creative fields.</p>
+    <p><strong>Amount:</strong> $3,000 per year</p>
+    <p><strong>Deadline:</strong> July 30, 2025</p>
+    <button class="btn btn-apply">Apply Now</button>
+</div>
+
+<div class="card p-4" data-name="Healthcare Heroes Scholarship" data-eligibility="healthcare-students" data-amount="6000">
+    <div class="d-flex justify-content-between">
+        <h5>Healthcare Heroes Scholarship</h5>
+        <span class="scholarship-score">Recommendation: 93%</span>
+    </div>
+    <p><strong>Eligibility:</strong> Students pursuing a degree in nursing, medicine, or public health.</p>
+    <p><strong>Amount:</strong> $6,000 per year</p>
+    <p><strong>Deadline:</strong> March 15, 2025</p>
+    <button class="btn btn-apply">Apply Now</button>
+</div>
+
+<div class="card p-4" data-name="Entrepreneurship Scholarship Program" data-eligibility="business-students" data-amount="5000">
+    <div class="d-flex justify-content-between">
+        <h5>Entrepreneurship Scholarship Program</h5>
+        <span class="scholarship-score">Recommendation: 80%</span>
+    </div>
+    <p><strong>Eligibility:</strong> Business students with a passion for entrepreneurship.</p>
+    <p><strong>Amount:</strong> $5,000 one-time award</p>
+    <p><strong>Deadline:</strong> June 20, 2025</p>
+    <button class="btn btn-apply">Apply Now</button>
+</div>
+
+<div class="card p-4" data-name="Environmental Leadership Scholarship" data-eligibility="environmental-science" data-amount="4500">
+    <div class="d-flex justify-content-between">
+        <h5>Environmental Leadership Scholarship</h5>
+        <span class="scholarship-score">Recommendation: 82%</span>
+    </div>
+    <p><strong>Eligibility:</strong> Students studying environmental science or sustainability.</p>
+    <p><strong>Amount:</strong> $4,500 per year</p>
+    <p><strong>Deadline:</strong> August 15, 2025</p>
+    <button class="btn btn-apply">Apply Now</button>
+</div>
+
+<div class="card p-4" data-name="Veterans Education Grant" data-eligibility="military-veterans" data-amount="7000">
+    <div class="d-flex justify-content-between">
+        <h5>Veterans Education Grant</h5>
+        <span class="scholarship-score">Recommendation: 91%</span>
+    </div>
+    <p><strong>Eligibility:</strong> Military veterans pursuing higher education.</p>
+    <p><strong>Amount:</strong> $7,000 one-time award</p>
+    <p><strong>Deadline:</strong> September 10, 2025</p>
+    <button class="btn btn-apply">Apply Now</button>
+</div>
+
+<div class="card p-4" data-name="First-Generation College Student Scholarship" data-eligibility="first-generation-students" data-amount="3500">
+    <div class="d-flex justify-content-between">
+        <h5>First-Generation College Student Scholarship</h5>
+        <span class="scholarship-score">Recommendation: 76%</span>
+    </div>
+    <p><strong>Eligibility:</strong> First-generation college students demonstrating financial need.</p>
+    <p><strong>Amount:</strong> $3,500 per year</p>
+    <p><strong>Deadline:</strong> December 1, 2024</p>
+    <button class="btn btn-apply">Apply Now</button>
+</div>
+
+<div class="card p-4" data-name="Global Health Scholarship" data-eligibility="health-studies" data-amount="8000">
+    <div class="d-flex justify-content-between">
+        <h5>Global Health Scholarship</h5>
+        <span class="scholarship-score">Recommendation: 89%</span>
+    </div>
+    <p><strong>Eligibility:</strong> Students enrolled in health studies with a focus on global health issues.</p>
+    <p><strong>Amount:</strong> $8,000 per year</p>
+    <p><strong>Deadline:</strong> January 31, 2025</p>
+    <button class="btn btn-apply">Apply Now</button>
+</div>
+
+<div class="card p-4" data-name="Journalism and Media Scholarship" data-eligibility="media-studies" data-amount="2500">
+    <div class="d-flex justify-content-between">
+        <h5>Journalism and Media Scholarship</h5>
+        <span class="scholarship-score">Recommendation: 72%</span>
+    </div>
+    <p><strong>Eligibility:</strong> Students majoring in journalism, communications, or media studies.</p>
+    <p><strong>Amount:</strong> $2,500 per year</p>
+    <p><strong>Deadline:</strong> May 10, 2025</p>
+    <button class="btn btn-apply">Apply Now</button>
+</div>
+
+<div class="card p-4" data-name="Tech Diversity Scholarship" data-eligibility="diversity-technology" data-amount="5000">
+    <div class="d-flex justify-content-between">
+        <h5>Tech Diversity Scholarship</h5>
+        <span class="scholarship-score">Recommendation: 85%</span>
+    </div>
+    <p><strong>Eligibility:</strong> Underrepresented minorities in technology fields.</p>
+    <p><strong>Amount:</strong> $5,000 one-time award</p>
+    <p><strong>Deadline:</strong> February 28, 2025</p>
+    <button class="btn btn-apply">Apply Now</button>
+</div>
+
+        <!-- Add more scholarships as needed -->
+    </div>
+
+    <!-- No results message -->
+    <div id="noResults" class="no-results" style="display: none;">
+        No scholarships match your search criteria.
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Scholarship Search Functionality
+    document.getElementById('searchInput').addEventListener('input', function() {
+        let searchQuery = this.value.toLowerCase();
+        let scholarships = document.querySelectorAll('#scholarshipList .card');
+        let noResults = document.getElementById('noResults');
+        let matchesFound = false;
+
+        scholarships.forEach(scholarship => {
+            let scholarshipName = scholarship.getAttribute('data-name').toLowerCase();
+            let eligibility = scholarship.getAttribute('data-eligibility').toLowerCase();
+            let amount = scholarship.getAttribute('data-amount').toLowerCase();
+
+            if (scholarshipName.includes(searchQuery) || eligibility.includes(searchQuery) || amount.includes(searchQuery)) {
+                scholarship.style.display = 'block';
+                matchesFound = true;
+            } else {
+                scholarship.style.display = 'none';
+            }
+        });
+
+        noResults.style.display = matchesFound ? 'none' : 'block';
+    });
+</script>
+</body>
+</html>
