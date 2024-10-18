@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <title>Responsive Scholarship Dashboard</title>
+    <title>INSPIRO Institution Auditor Dashboard</title>
     <style>
         body {
             background-color: #f8f9fa;
         }
 
         .sidebar {
-            background-color: #0056b3;
+            background-color: #007bff;
             color: #fff;
             height: 100vh;
             position: fixed;
@@ -22,10 +22,13 @@
         .sidebar .nav-link {
             color: #fff;
             margin-bottom: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #0560c9;
         }
 
-        .sidebar .nav-link.active {
-            background-color: #0069d9;
+        .sidebar .nav-link:hover {
+            background-color: #044fa4; /* Dark Blue color on hover */
+            color: #fff;
         }
 
         .main-content {
@@ -42,16 +45,15 @@
             height: 20px;
         }
 
-        /* New style for Dashboard Widgets */
         .widget-card {
             background-color: #e9ecef;
-            /* Light gray color */
         }
+
         .notification-list {
             max-height: 250px;
             overflow-y: auto;
         }
-        /* Responsive adjustments */
+
         @media (max-width: 768px) {
             .sidebar {
                 height: auto;
@@ -82,15 +84,15 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar d-flex flex-column align-items-center justify-content-center text-center p-3">
-        <img src="https://cdn.pixabay.com/photo/2024/08/23/17/43/graduate-8992446_640.png" alt="Profile Picture"
+        <img src="https://cdn.pixabay.com/photo/2024/08/23/17/43/graduate-8992446_640.png" alt="Institution Logo"
             class="rounded-circle mb-2" height="100px">
-        <h4>Student Name</h4>
-        <p>University Name</p>
+        <h4>Institution Name</h4>
+        <p>AI-Driven Institution Inspection</p>
         <nav class="nav flex-column w-100">
-            <a class="nav-link active" href="#">Dashboard</a>
-            <a class="nav-link" href="#">Profile</a>
-            <a class="nav-link" href="#">Scholarship Matches</a>
-            <a class="nav-link" href="#">Applications</a>
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="#">Institution Profile</a>
+            <a class="nav-link" href="#">Scheduled Inspections</a>
+            <a class="nav-link" href="#">Inspection Reports</a>
             <a class="nav-link" href="#">Settings</a>
         </nav>
         <a href="#" class="btn btn-danger mt-3 mb-3">Sign Out</a>
@@ -98,111 +100,107 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Welcome Message -->
-        <div class="card mb-4">
-            <div class="card-body text-center bg-primary text-white">
-                <h2>Welcome back, [Student Name]</h2>
-            </div>
-        </div>
         <div class="container mt-5">
-
+            <!-- Welcome Message -->
+            <div class="card mb-4">
+                <div class="card-body text-center bg-primary text-white">
+                    <h2>Welcome back, [Institution Name]</h2>
+                </div>
+            </div>
+            
             <!-- Dashboard Widgets -->
             <div class="row">
-                <!-- Profile Summary -->
-                <div class="col-lg-6 col-md-12 mb-4">
+                <!-- Inspection Summary -->
+                <div id="Institution Summary" class="col-lg-6 col-md-12 mb-4">
                     <div class="card widget-card">
                         <div class="card-body">
-                            <h5 class="card-title">Profile Summary</h5>
+                            <h5 class="card-title">Institution Summary</h5>
                             <div class="d-flex align-items-center flex-column flex-md-row">
                                 <img src="https://cdn.pixabay.com/photo/2024/08/23/17/43/graduate-8992446_640.png"
-                                    class="rounded-circle mb-2 mb-md-0 mr-md-3 " alt="Profile Image" height="100px">
+                                    class="rounded-circle mb-2 mb-md-0 mr-md-3 " alt="Institution Logo" height="100px">
                                 <div>
-                                    <h6>[Student Name]</h6>
-                                    <p>[Field of Study]</p>
+                                    <h6>[Institution Name]</h6>
+                                    <p>[Location]</p>
                                     <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%;"
-                                            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75% Complete</div>
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 80%;"
+                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80% Complete</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Scholarship Matches -->
+            
+                <!-- Inspection Alerts -->
                 <div class="col-lg-6 col-md-12 mb-4">
                     <div class="card widget-card">
                         <div class="card-body">
-                            <h5 class="card-title">AI-Powered Scholarship Matches</h5>
+                            <h5 class="card-title">Upcoming Inspections</h5>
                             <div class="card bg-light mb-2">
-                                <div class="card-body p-2 text-left"> <!-- Added text-left class -->
-                                    <h6>Scholarship A</h6>
-                                    <p>Eligibility Score: 85%</p>
-                                    <p>Deadline: 15th Oct</p>
-                                    <a href="#" class="btn btn-sm btn-primary">Apply Now</a>
+                                <div class="card-body p-2 text-left">
+                                    <h6>Building Safety Audit</h6>
+                                    <p>Scheduled: 20th Oct</p>
+                                    <a href="#" class="btn btn-sm btn-primary">View Details</a>
                                 </div>
                             </div>
                             <div class="card bg-light mb-2">
-                                <div class="card-body p-2 text-left"> <!-- Added text-left class -->
-                                    <h6>Scholarship B</h6>
-                                    <p>Eligibility Score: 78%</p>
-                                    <p>Deadline: 20th Oct</p>
-                                    <a href="#" class="btn btn-sm btn-primary">Apply Now</a>
+                                <div class="card-body p-2 text-left">
+                                    <h6>Electrical Compliance Check</h6>
+                                    <p>Scheduled: 25th Oct</p>
+                                    <a href="#" class="btn btn-sm btn-primary">View Details</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-              <!-- Dashboard Overview -->
+
+            <!-- Dashboard Overview -->
             <div class="row text-light">
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card dashboard-card text-center p-3 bg-primary f">
+                    <div class="card dashboard-card text-center p-3 bg-primary">
                         <div class="card-body">
-                            <h6 class="overview-title">Total Scholarships Applied</h6>
-                            <h3>12</h3>
+                            <h6 class="overview-title">Total Inspections Conducted</h6>
+                            <h3>25</h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="card dashboard-card text-center p-3 bg-primary">
                         <div class="card-body">
-                            <h6 class="overview-title">Scholarships Won</h6>
+                            <h6 class="overview-title">Pending Reports</h6>
+                            <h3>3</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card dashboard-card text-center p-3 bg-primary">
+                        <div class="card-body">
+                            <h6 class="overview-title">Issues Resolved</h6>
+                            <h3>18</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card dashboard-card text-center p-3 bg-primary">
+                        <div class="card-body">
+                            <h6 class="overview-title">New Inspections Scheduled</h6>
                             <h3>4</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card dashboard-card text-center p-3 bg-primary">
-                        <div class="card-body">
-                            <h6 class="overview-title">Applications Pending</h6>
-                            <h3>6</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card dashboard-card text-center p-3 bg-primary">
-                        <div class="card-body">
-                            <h6 class="overview-title">Rejected Applications</h6>
-                            <h3>2</h3>
-                        </div>
-                    </div>
-                </div>
             </div>
+
             <div class="row">
-                <!-- Application Status Tracker -->
+                <!-- Inspection Status Tracker -->
                 <div class="col-lg-6 col-md-12 mb-4">
                     <div class="card widget-card">
                         <div class="card-body">
-                            <h5 class="card-title">Application Status Tracker</h5>
+                            <h5 class="card-title">Inspection Status Tracker</h5>
                             <ul class="list-group">
-                                <li class="list-group-item">Profile Complete <span
-                                        class="badge badge-success">Done</span></li>
-                                <li class="list-group-item">Documents Uploaded <span class="badge badge-warning">In
-                                        Progress</span></li>
-                                <li class="list-group-item">Application Submitted <span
-                                        class="badge badge-secondary">Pending</span></li>
+                                <li class="list-group-item">Initial Assessment <span class="badge badge-success">Completed</span></li>
+                                <li class="list-group-item">Site Audit <span class="badge badge-warning">In Progress</span></li>
+                                <li class="list-group-item">Report Generation <span class="badge badge-secondary">Pending</span></li>
                             </ul>
                         </div>
                     </div>
@@ -214,9 +212,9 @@
                         <div class="card-body">
                             <h5 class="card-title">Task Reminders</h5>
                             <ul class="task-list">
-                                <li>🔔 Submit transcript by Oct 15</li>
-                                <li>🔔 Complete essay for XYZ Scholarship</li>
-                                <li>🔔 Upload supporting documents</li>
+                                <li>🔔 Upload inspection photos by Oct 19</li>
+                                <li>🔔 Complete safety checklist review</li>
+                                <li>🔔 Update inspection report template</li>
                             </ul>
                         </div>
                     </div>
@@ -224,24 +222,24 @@
             </div>
 
             <!-- Notifications -->
-        <div class="col-lg-6 mb-4">
-            <div class="card">
-                <div class="card-header card-header-custom"><h5>Notifications</h5></div>
-                <div class="card-body notification-list">
-                    <ul class="list-group">
-                        <li class="list-group-item">Your application for the Rhodes Scholarship has been received.</li>
-                        <li class="list-group-item">Reminder: Submit documents for Fulbright Program by 10th October.</li>
-                        <li class="list-group-item">Your National Merit Scholarship application is under review.</li>
-                        <!-- More notifications -->
-                    </ul>
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-header"><h5>Notifications</h5></div>
+                    <div class="card-body notification-list">
+                        <ul class="list-group">
+                            <li class="list-group-item">New inspection report uploaded for XYZ Institute.</li>
+                            <li class="list-group-item">Reminder: Complete the electrical safety audit by 22nd October.</li>
+                            <li class="list-group-item">Issue #13 has been resolved.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
